@@ -11,3 +11,9 @@ pt-BR:
       search_button: "Buscar"
       result: "Resultado"
       ddd_prefix: "DDD %{ddd}"
+  modal:
+    open_config: "Abrir Configurações"
+    theme_config: "Configuração de Tema"
+    select_theme: "Selecione o tema desejado"
+    language_config: "Configuração de Idioma"
+    close: "Fechar"

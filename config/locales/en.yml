@@ -11,3 +11,9 @@ en:
       search_button: "Search"
       result: "Result"
       ddd_prefix: "Area Code: %{ddd}"
+  modal:
+    open_config: "Open Config"
+    theme_config: "Theme Configuration"
+    select_theme: "Select your desired theme"
+    language_config: "Language Configuration"
+    close: "Close"

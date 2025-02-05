@@ -25,6 +25,9 @@ module ConsultaCEP
       autoloader.collapse(Rails.root.join("lib", path))
     end
 
+    config.i18n.available_locales = [ :en, :"pt-BR" ]
+    config.i18n.default_locale = :en
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

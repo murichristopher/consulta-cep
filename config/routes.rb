@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get "ceps", to: "ceps#index"
 
   root "pages#welcome"
+  post '/change_language', to: 'language#change'
 end
