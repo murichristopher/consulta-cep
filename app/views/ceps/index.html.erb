@@ -37,10 +37,8 @@
         <% elsif @error %>
           <div class="alert alert-error shadow-lg mt-4">
             <div class="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-current flex-shrink-0" fill="none" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M12 8v4m0 4h.01M5.07 19h13.86C19.27 19 20 18.27 20 17.38V6.62C20 5.73 19.27 5 18.07 5H5.93C4.73 5 4 5.73 4 6.62v10.76C4 18.27 4.73 19 5.93 19z"/>
-              </svg>
+              <%= heroicon "exclamation-triangle", options: { class: "h-8 w-6 text-red-500" } %>
+
               <span class="ml-2"><%= @error %></span>
             </div>
           </div>
