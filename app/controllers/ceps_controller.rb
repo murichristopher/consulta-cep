@@ -11,5 +11,10 @@ class CepsController < ApplicationController
         @error = I18n.t("errors.cep_lookup_error")
       end
     end
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 end
