@@ -7,7 +7,7 @@
 
       <!-- Turbo Frame -->
       <turbo-frame id="cep_result">
-        <%= form_with url: ceps_path, method: :get, data: { turbo_frame: "cep_result" } do |f| %>
+        <%= form_with url: ceps_path, method: :get, data: { turbo_frame: "cep_result", action: "turbo:submit-start->cep#showLoading" } do |f| %>
           <div class="form-control">
             <label class="label">
               <span class="label-text"><%= t('ceps.index.enter_cep') %></span>
@@ -24,9 +24,16 @@
           </div>
         <% end %>
 
+        <div data-cep-target="skeleton" class="hidden mt-6 space-y-4">
+          <div class="skeleton h-6 w-32 mx-auto"></div>
+          <div class="skeleton h-4 w-48 mx-auto"></div>
+          <div class="skeleton h-4 w-40 mx-auto"></div>
+          <div class="skeleton h-4 w-36 mx-auto"></div>
+          <div class="skeleton h-4 w-28 mx-auto"></div>
+        </div>
+
         <% if @address.present? %>
-          <div class="divider my-6"><%= t('ceps.index.result') %></div>
-          <div class="text-center space-y-2">
+          <div class="text-center space-y-2 my-4" data-cep-target="result">
             <p class="text-xl font-bold"><%= @address[:cep] %></p>
             <p class="text-lg"><strong><%= t('ceps.index.address') %>:</strong> <%= @address[:street] %></p>
             <p class="text-lg"><strong><%= t('ceps.index.district') %>:</strong> <%= @address[:district] %></p>
@@ -35,10 +42,9 @@
             <p class="text-lg"><strong><%= t('ceps.index.ddd') %>:</strong> <%= @address[:ddd] %></p>
           </div>
         <% elsif @error %>
-          <div class="alert alert-error shadow-lg mt-4">
+          <div class="alert alert-error shadow-lg mt-4" data-cep-target="result">
             <div class="flex items-center">
-              <%= heroicon "exclamation-triangle", options: { class: "h-8 w-6 text-red-500" } %>
-
+              <%= heroicon "exclamation-triangle", options: { class: "h-8 w-6" } %>
               <span class="ml-2"><%= @error %></span>
             </div>
           </div>
