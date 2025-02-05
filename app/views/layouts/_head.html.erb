@@ -1,0 +1,18 @@
+<title><%= content_for(:title) || "Consulta CEP" %> </title>
+<meta name="viewport" content="width=device-width, initial-scale=1,  maximum-scale=2, user-scalable=1, shrink-to-fit=no">
+<meta name="description" content=".">
+<meta name="keywords" content="">
+<meta name="author" content="murichristopher">
+<%= csrf_meta_tags %>
+<%= csp_meta_tag %>
+<%= action_cable_meta_tag%>
+<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+<%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+<%= yield :head %>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/icon.png" type="image/png">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon.png">
+<script>
+  document.documentElement.setAttribute('data-theme', window.localStorage.getItem('theme'))
+</script>
