@@ -1,0 +1,13 @@
+pt-BR:
+  errors:
+    cep_not_found: "Não encontramos o CEP informado. Por favor, verifique se o CEP está correto."
+    cep_request_error: "Não foi possível buscar as informações do CEP. Tente novamente mais tarde."
+    cep_lookup_error: "Ocorreu um erro ao buscar o CEP. Por favor, tente novamente."
+  ceps:
+    index:
+      search_title: "Buscar CEP"
+      enter_cep: "Digite o CEP:"
+      placeholder: "Ex: 01001000"
+      search_button: "Buscar"
+      result: "Resultado"
+      ddd_prefix: "DDD %{ddd}"

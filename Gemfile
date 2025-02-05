@@ -72,3 +72,4 @@ group :development do
   gem "ruby-lsp-rails", require: false
 end
 
+gem "faraday"
