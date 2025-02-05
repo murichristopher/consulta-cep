@@ -4,7 +4,6 @@ export default class extends Controller {
   static targets = ["input"]
 
   format(event) {
-    console.log("hello")
     const input = event.target;
     let digits = input.value.replace(/\D/g, '');
 
@@ -18,7 +17,6 @@ export default class extends Controller {
   }
 
   validate() {
-    console.log("hello")
     const input = this.inputTarget;
     const cepPattern = /^\d{5}-?\d{3}$/;
 
