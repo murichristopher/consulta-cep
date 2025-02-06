@@ -1,0 +1,29 @@
+<script>
+  function closeModalWithAnimation() {
+    const modal = document.getElementById('my_modal_1');
+    const modalBox = modal.querySelector('.modal-box');
+
+    modalBox.classList.add('modal-close-animation');
+
+    setTimeout(() => {
+      modal.close();
+      modalBox.classList.remove('modal-close-animation');
+    }, 300);
+  }
+
+  function changeLanguage(lang) {
+    fetch(`/change_language?lang=${lang}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          location.reload();
+        }
+      });
+  }
+</script>
