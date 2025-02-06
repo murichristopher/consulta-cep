@@ -1,9 +1,19 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require 'faker'
+
+puts 'Clearing old data...'
+Address.destroy_all
+
+puts 'Generating addresses...'
+10.times do
+  Address.create!(
+    cep: Faker::Base.numerify('########'),
+    street: Faker::Address.street_name,
+    district: Faker::Address.community,
+    city: Faker::Address.city,
+    state: Faker::Address.state_abbr,
+    ddd: Faker::Base.numerify('##'),
+    search_count: rand(1..50)
+  )
+end
+
+puts "Created #{Address.count} addresses."
