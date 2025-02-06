@@ -136,7 +136,7 @@ Para executar a suíte de testes:
 ### **Dentro do Docker**
 
 ```bash
-	docker compose exec -e RAILS_ENV=test web bundle exec rspec
+docker compose exec -e RAILS_ENV=test web bundle exec rspec
 ```
 
 ### **Ou localmente**
