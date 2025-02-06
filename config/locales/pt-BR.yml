@@ -11,6 +11,12 @@ pt-BR:
       search_button: "Buscar"
       result: "Resultado"
       ddd_prefix: "DDD %{ddd}"
+      most_searched_ceps: "CEPs Mais Buscados"
+      ceps_by_state: "CEPs por Estado"
+      most_searched_by_location: "Mais Buscados por Localização"
+      no_records: "Nenhum registro encontrado"
+      searches: "buscas"
+      ceps_count: "CEPs"
   modal:
     open_config: "Abrir Configurações"
     theme_config: "Configuração de Tema"

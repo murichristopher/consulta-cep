@@ -75,7 +75,7 @@
           <% if @ceps_by_state.present? %>
             <ul class="space-y-2">
               <% @ceps_by_state.each do |state, count| %>
-                <li>📍 <%= state %>: <%= count %> CEPs</li>
+                <li>📍 <%= state %>: <%= count %> <%= t('ceps.index.ceps') %></li>
               <% end %>
             </ul>
           <% else %>

@@ -11,6 +11,12 @@ en:
       search_button: "Search"
       result: "Result"
       ddd_prefix: "Area Code: %{ddd}"
+      most_searched_ceps: "Most Searched CEPs"
+      ceps_by_state: "CEPs by State"
+      most_searched_by_location: "Most Searched by Location"
+      no_records: "No records found."
+      searches: "searches"
+      ceps: "CEPs"
   modal:
     open_config: "Open Config"
     theme_config: "Theme Configuration"
