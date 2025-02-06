@@ -32,15 +32,13 @@ services:
       - .env
     tty: true
     stdin_open: true
-    command: bash -c "rm -rf tmp/pids/server.pid && bin/setup && ./bin/dev"
+    command: bash -c "rm -rf tmp/pids/server.pid && ./bin/dev"
     working_dir: /app
     volumes:
       - .:/app
-      - rubygems:/usr/local/bundle
 
 volumes:
   postgres13:
-  rubygems:
 
 networks:
   default-network:
