@@ -9,11 +9,11 @@ default: &default
 
 development:
   <<: *default
-  database: <%= ENV.fetch("DB_NAME", "app_development") %>
+  database: <%= ENV.fetch("DB_NAME", "consulta_cep_development") %>
 
 test:
   <<: *default
-  database: <%= ENV.fetch("DB_NAME", "app_test") %>
+  database: <%= ENV.fetch("DB_NAME", "consulta_cep_test") %>
 
 production:
   <<: *default

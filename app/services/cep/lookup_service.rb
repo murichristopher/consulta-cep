@@ -1,4 +1,3 @@
-# app/services/cep/lookup_service.rb
 module Cep
   class LookupService
     class LookupError < StandardError; end
