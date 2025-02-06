@@ -39,9 +39,9 @@ RSpec.describe Address, type: :model do
     describe ".most_searched_by_location" do
       it "returns the most searched locations" do
         expect(Address.most_searched_by_location(3)).to eq({
-          ["Rio de Janeiro", "RJ"] => 20,
-          ["Belo Horizonte", "MG"] => 15,
-          ["São Paulo", "SP"] => 10
+          [ "Rio de Janeiro", "RJ" ] => 20,
+          [ "Belo Horizonte", "MG" ] => 15,
+          [ "São Paulo", "SP" ] => 10
         })
       end
     end
