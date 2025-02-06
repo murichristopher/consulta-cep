@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
-  validates :cep, presence: true, uniqueness: true
+  validates :cep, presence: true, uniqueness: { case_sensitive: false }
   validates :city, :state, presence: true
 
   scope :most_searched_ceps, ->(limit = 5) {

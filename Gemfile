@@ -64,6 +64,8 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+    gem 'shoulda-matchers'
+
 end
 
 group :development do
@@ -74,3 +76,8 @@ end
 
 gem "faraday"
 gem "heroicon"
+
+gem "rspec-rails", "~> 7.1", :groups => [:development, :test]
+
+  gem 'factory_bot_rails'
+  gem 'faker'
