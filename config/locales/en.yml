@@ -1,7 +1,7 @@
 en:
   errors:
     cep_not_found: "The provided CEP was not found. Please check if the CEP is correct."
-    cep_request_error: "We couldn't retrieve the CEP information. Please try again later."
+    cep_request_error: "We could not retrieve the CEP information. Please try again later."
     cep_lookup_error: "An error occurred while fetching the CEP. Please try again."
   ceps:
     index:
