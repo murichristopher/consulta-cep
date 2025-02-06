@@ -1,6 +1,6 @@
 # **ConsultaCep**
 
-Este projeto foi desenvolvido como parte do Desafio Técnico Oficinaria, que consiste em criar uma aplicação web de busca por CEP. As principais tecnologias utilizadas foram Ruby on Rails, integrado com Tailwind CSS + DaisyUI, Turbo JS e Stimulus. A aplicação está hospedada no Heroku e pode ser acessada em:
+Este projeto foi desenvolvido como parte do Desafio Técnico Oficinaria, que consiste em criar uma aplicação web de busca por CEP. As principais tecnologias utilizadas foram **Ruby on Rails**, integrado com **Tailwind CSS** + **DaisyUI**, **Turbo JS** e **Stimulus**. A aplicação está hospedada no Heroku e pode ser acessada em:
 
 [https://consulta-cep-c0754f8e8c0d.herokuapp.com/](https://consulta-cep-c0754f8e8c0d.herokuapp.com/)
 
