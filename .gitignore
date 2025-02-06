@@ -43,3 +43,4 @@
 .kamal/
 .yarn/
 .env
+coverage/
