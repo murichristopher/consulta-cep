@@ -1,6 +1,6 @@
 # **ConsultaCep**
 
-Este projeto foi desenvolvido como parte do **Desafio Técnico Oficinaria**, que consiste em criar uma aplicação web de **busca por CEP** usando **Ruby on Rails** integrado com **Tailwind CSS + DaisyUI** (a mesma _tech stack_ utilizada na Oficinaria). A aplicação está **hospedada no Heroku** e pode ser acessada em:  
+Este projeto foi desenvolvido como parte do **Desafio Técnico Oficinaria**, que consiste em criar uma aplicação web de **busca por CEP** usando **Ruby on Rails** integrado com **Tailwind CSS + DaisyUI** e Turbo JS e Stimulus. A aplicação está **hospedada no Heroku** e pode ser acessada em:  
 [https://consulta-cep-c0754f8e8c0d.herokuapp.com/](https://consulta-cep-c0754f8e8c0d.herokuapp.com/)
 
 A aplicação realiza chamadas à [Awesome API de CEP](https://cep.awesomeapi.com.br/) para exibir informações de endereço, estado, cidade e outras estatísticas relacionadas aos CEPs buscados.
