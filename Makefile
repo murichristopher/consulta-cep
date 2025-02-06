@@ -1,15 +1,27 @@
-.PHONY: db setup reset
+.DEFAULT_GOAL: help
 
-db:
-	@if [ "`docker ps | grep my_postgres`" ]; then \
-		echo "PostgreSQL container is already running."; \
-	elif [ "`docker ps -a | grep my_postgres`" ]; then \
-		echo "Starting existing PostgreSQL container."; \
-		docker start my_postgres; \
-	else \
-		echo "Running a new PostgreSQL container."; \
-		docker run --name my_postgres -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres:16.2-alpine; \
-	fi
+help:
+	@awk 'BEGIN {FS = ":.*##"; printf "Usage: make \033[36m<target>\033[0m\n"} \
+		/^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } \
+		/^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
-setup:
-	rails db:drop db:create db:migrate db:seed
+start: ## Start all containers (web, sidekiq, db, redis) in the background
+	docker compose up -d --remove-orphans
+
+bash: ## Open a bash shell inside the web container
+	docker compose exec web bash
+
+console: ## Open a Rails console
+	docker compose exec web bash -c "./bin/rails c"
+
+stop: ## Stop and remove all containers
+	docker compose down
+
+clean: ## Remove containers, local images, and orphan containers
+	docker compose down --rmi local --remove-orphans
+
+tests: ## Run the test suite in the web container
+	docker compose exec -e RAILS_ENV=test web bundle exec rspec
+
+logs: ## Follow the logs for all running containers
+	docker compose logs -f

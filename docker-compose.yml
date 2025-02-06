@@ -1,0 +1,47 @@
+services:
+  db:
+    container_name: db
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres13:/var/lib/postgresql/data
+    networks:
+      - default-network
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 10s
+      retries: 5
+      timeout: 5s
+
+  web:
+    container_name: web
+    restart: unless-stopped
+    build:
+      context: .
+    ports:
+      - '3000:3000'
+    networks:
+      - default-network
+    env_file:
+      - .env
+    tty: true
+    stdin_open: true
+    command: bash -c "rm -rf tmp/pids/server.pid && bin/setup && ./bin/dev"
+    working_dir: /app
+    volumes:
+      - .:/app
+      - rubygems:/usr/local/bundle
+
+volumes:
+  postgres13:
+  rubygems:
+
+networks:
+  default-network:
+    driver: bridge
