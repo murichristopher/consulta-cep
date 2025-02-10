@@ -53,6 +53,17 @@
                 <%= heroicon "phone", options: { class: "inline w-5 h-5 mr-1" } %>
                 <strong><%= t('ceps.index.ddd') %>:</strong> <%= @address[:ddd] %>
               </p>
+
+                 <iframe
+  width="600"
+  height="450"
+  style="border:0"
+  loading="lazy"
+  allowfullscreen
+  referrerpolicy="no-referrer-when-downgrade"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAU9i5GDQuRvECdJiJx-6YKTI_lqKOe2xw
+    &q=<%= @address.lat %>,<%= @address.lng %>">
+</iframe>
             </div>
           <% elsif @error %>
             <div class="alert alert-error text-white shadow-lg mt-4" data-cep-target="result">

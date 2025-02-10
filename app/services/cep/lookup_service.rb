@@ -65,7 +65,9 @@ module Cep
         district:  data["district"],
         city:      data["city"],
         state:     data["state"],
-        ddd:       data["ddd"]
+        ddd:       data["ddd"],
+        lat:       data["lat"],
+        lng:       data["lng"]
       }
     end
   end

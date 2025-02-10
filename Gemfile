@@ -66,7 +66,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
-    gem "shoulda-matchers"
+  gem "shoulda-matchers"
   gem "webmock"
     gem "simplecov", require: false
 end
