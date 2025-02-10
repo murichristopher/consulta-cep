@@ -32,7 +32,7 @@ services:
       - .env
     tty: true
     stdin_open: true
-    command: bash -c "rm -rf tmp/pids/server.pid && ./bin/dev"
+    command: bash -c "rm -rf tmp/pids/server.pid && bundle install && bin/setup ./bin/dev"
     working_dir: /rails
     volumes:
       - .:/rails:delegated
