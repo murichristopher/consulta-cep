@@ -14,35 +14,9 @@ module Cep
     def call
       Rails.logger.info("[Cep::LookupService] Starting lookup for CEP: #{@cep}")
       Rails.logger.debug("[Cep::LookupService] Constructed URL: #{url}")
-
       response = Faraday.get(url)
       Rails.logger.info("[Cep::LookupService] Received response with status: #{response.status}")
-
-      unless response.success?
-        case response.status
-        when 400
-          error_data = JSON.parse(response.body) rescue {}
-          error_message = error_data["message"]
-          Rails.logger.error("[Cep::LookupService] Invalid CEP: #{error_message}")
-          raise RequestError, error_message
-        when 404
-          error_data = JSON.parse(response.body) rescue {}
-          error_message = error_data["message"]
-          Rails.logger.error("[Cep::LookupService] CEP not found: #{error_message}")
-          raise NotFoundError, error_message
-        else
-          Rails.logger.error("[Cep::LookupService] Request error with status: #{response.status}")
-          raise RequestError
-        end
-      end
-
-      data = JSON.parse(response.body)
-      Rails.logger.debug("[Cep::LookupService] Response data: #{data}")
-
-      formatted_data = format_data(data)
-      Rails.logger.info("[Cep::LookupService] Formatted data: #{formatted_data}")
-
-      formatted_data
+      process_response(response)
     rescue Faraday::Error, JSON::ParserError => e
       Rails.logger.error("[Cep::LookupService] Error during lookup: #{e.message}")
       raise LookupError, e.message
@@ -56,6 +30,58 @@ module Cep
 
     def normalize_cep(cep)
       cep.gsub(/\D/, "")
+    end
+
+    def process_response(response)
+      unless response.success?
+        handle_error_response(response)
+      end
+
+      data = parse_response(response.body)
+      Rails.logger.debug("[Cep::LookupService] Response data: #{data}")
+
+      formatted_data = format_data(data)
+      Rails.logger.info("[Cep::LookupService] Formatted data: #{formatted_data}")
+
+      formatted_data
+    end
+
+    def parse_response(body)
+      JSON.parse(body)
+    end
+
+    def handle_error_response(response)
+      case response.status
+      when 400
+        handle_bad_request(response)
+      when 404
+        handle_not_found(response)
+      else
+        handle_generic_error(response)
+      end
+    end
+
+    def safe_parse(body)
+      JSON.parse(body) rescue {}
+    end
+
+    def handle_bad_request(response)
+      error_data = safe_parse(response.body)
+      error_message = error_data["message"]
+      Rails.logger.error("[Cep::LookupService] Invalid CEP: #{error_message}")
+      raise RequestError, error_message
+    end
+
+    def handle_not_found(response)
+      error_data = safe_parse(response.body)
+      error_message = error_data["message"]
+      Rails.logger.error("[Cep::LookupService] CEP not found: #{error_message}")
+      raise NotFoundError, error_message
+    end
+
+    def handle_generic_error(response)
+      Rails.logger.error("[Cep::LookupService] Request error with status: #{response.status}")
+      raise RequestError
     end
 
     def format_data(data)
