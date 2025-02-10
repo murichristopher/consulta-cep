@@ -33,12 +33,14 @@ services:
     tty: true
     stdin_open: true
     command: bash -c "rm -rf tmp/pids/server.pid && ./bin/dev"
-    working_dir: /app
+    working_dir: /rails
     volumes:
-      - .:/app
+      - .:/rails:delegated
+      - node_modules:/rails/node_modules
 
 volumes:
   postgres13:
+  node_modules:
 
 networks:
   default-network:
