@@ -18,7 +18,9 @@ RSpec.describe Cep::LookupService, type: :service do
           "district"=> "Bairro Falso",
           "city"    => "Cidade Falsa",
           "state"   => "SP",
-          "ddd"     => "11"
+          "ddd"     => "11",
+          "lat"     => "-23.550520",
+          "lng"     => "-46.633308"
         }.to_json
       end
 
@@ -35,7 +37,9 @@ RSpec.describe Cep::LookupService, type: :service do
           district: "Bairro Falso",
           city:     "Cidade Falsa",
           state:    "SP",
-          ddd:      "11"
+          ddd:      "11",
+          lat: "-23.550520",
+          lng: "-46.633308",
         )
       end
     end
