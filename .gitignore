@@ -43,4 +43,5 @@
 .kamal/
 .yarn/
 .env
+!.env.example
 coverage/
